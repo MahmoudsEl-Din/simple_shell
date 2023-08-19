@@ -13,7 +13,7 @@ char *removeLeadingSpaces(char *buffer)
 
 	new_buffer = str_dup(buffer);
 	if (new_buffer[0] != ' ')
-		return new_buffer;
+		return (new_buffer);
 
 	while (new_buffer[i] == ' ')
 		i++;
@@ -35,12 +35,12 @@ char *removeLeadingSpaces(char *buffer)
 	cleanedBuffer[i - firstCharPosition] = '\0';
 
 	free(new_buffer);
-	return cleanedBuffer;
+	return (cleanedBuffer);
 }
 
 
 /**
- * frees memory allocated in the argument vector.
+ * freeArgv - frees memory allocated in the argument vector.
  * @argv: argument vector to be freed.
  */
 void freeArgv(char **argv)
@@ -81,6 +81,6 @@ char *removeComments(char *buffer)
 	}
 	cleanedBuffer[i] = '\0';
 
-	return cleanedBuffer;
+	return (cleanedBuffer);
 }
 
