@@ -5,7 +5,7 @@
  * createArgumentVector - converts input into an argument vector.
  * @input_buffer: the input to be processed.
  * @path: pointer to path list.
- * pointer to the new argument vector.
+ * Return: pointer to the new argument vector.
  */
 char **createArgumentVector(char *input_buffer, list_t **path)
 {
@@ -16,8 +16,7 @@ char **createArgumentVector(char *input_buffer, list_t **path)
 	newInput = getPath(input_buffer, path);
 	while (newInput[i])
 	{
-        /* Increment the counter if the current position is a space and the following position is not NULL, space, or \n. */
-		if (newInput[i] == ' ' &&
+		if (newInput[i] == ' ' &&	/* Increment the counter */
 			(newInput[i + 1] &&
 				(newInput[i + 1] != ' ' &&
 					newInput[i + 1] != '\n')))
@@ -36,15 +35,14 @@ char **createArgumentVector(char *input_buffer, list_t **path)
 	currentToken = strtok(currentToken, " ");
 	while (ac < (argc + 1))
 	{
-        /* Duplicate the argument and add it to the array */
-		tokenToPut = str_dup(currentToken);
+		tokenToPut = str_dup(currentToken);	/* Duplicate the argument */
 		argv[ac] = tokenToPut;
 		currentToken = strtok(NULL, " ");
 		ac++;
 
 	}
 	free(newInput);
-	return argv;
+	return (argv);
 }
 
 
@@ -52,6 +50,7 @@ char **createArgumentVector(char *input_buffer, list_t **path)
  * getPath - get the directory path where the command is executable.
  * @buffer: all the command have been passed.
  * @path: pointer to path  list.
+ * Return: pointer.
  */
 char *getPath(char *buffer, list_t **path)
 {
@@ -87,7 +86,7 @@ char *getPath(char *buffer, list_t **path)
 	slashInput = str_con("/", input);
 
 	free(port);
-	return port_getPath(pathList, slashCommand, slashInput, input);
+	return (port_getPath(pathList, slashCommand, slashInput, input));
 }
 
 
@@ -97,13 +96,15 @@ char *getPath(char *buffer, list_t **path)
  * @slashCommand: string.
  * @slashInput: string.
  * @input: input string.
+ * Return: pointer.
  */
-char *port_getPath(list_t *pathList, char *slashCommand, char *slashInput, char *input)
+char *port_getPath(list_t *pathList, char *slashCommand,
+							char *slashInput, char *input)
 {
 	char *port;
 	struct stat status;
 
-	while (pathList) 
+	while (pathList)
 	{
 		/* Check if the command is executable in the current directory */
 		port = str_con(pathList->dir, slashCommand);
@@ -125,6 +126,6 @@ char *port_getPath(list_t *pathList, char *slashCommand, char *slashInput, char 
 	}
 	free(slashInput);
 	free(slashCommand);
-	return input;
+	return (input);
 }
 
