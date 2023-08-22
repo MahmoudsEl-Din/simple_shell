@@ -10,22 +10,17 @@
  */
 int main(__attribute__((unused)) int ac, char **av, char **env)
 {
-	
 	list_t *path;
 	char *file_id = av[0];
 	int port, method = 0;
 
 	signal(SIGINT, SIG_IGN);
 	path = createPathList(env);
-	
 	if (isatty(0))
 		method = 1
-	
 	port = run(path, env, file_id, method);
 	freeDirList(path
-	
 	return (port);
-	
 }
 
 /**
@@ -57,6 +52,6 @@ int run_fork(char **input, char *file_id)
 			execution_result = 127;
 	}
 
-	return execution_result;
+	return (execution_result);
 }
 
