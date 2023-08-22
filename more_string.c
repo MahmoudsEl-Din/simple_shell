@@ -4,7 +4,7 @@
  * str_con - link two strings into a new memory address.
  * @s1: first string to be linked.
  * @s2: second string to be linked.
- * Return memory address to the new string.
+ * Return: memory address to the new string.
  */
 char *str_con(char *s1, char *s2)
 {
@@ -19,7 +19,7 @@ char *str_con(char *s1, char *s2)
 
 	str_cpy(result, s1);
 	str_cat(result, s2);
-	return result;
+	return (result);
 }
 
 /**
@@ -27,6 +27,7 @@ char *str_con(char *s1, char *s2)
  * @buffer: input buffer.
  * @old_char: char to be change with new one.
  * @new_char: the new char the repcaled.
+ * Return: return
  */
 char *str_tr(char *buffer, char old_char, char new_char)
 {
@@ -48,14 +49,14 @@ char *str_tr(char *buffer, char old_char, char new_char)
 		i++;
 	}
 
-	return new_buffer;
+	return (new_buffer);
 }
 
 /**
  * str_comp - making a compares between a 2 strings.
  * @s1: input string 1.
  * @s2: input string 2.
- * let's return 0 if s1 == s2, otherwise -1.
+ * Return: let's return 0 if s1 == s2, otherwise -1.
  */
 int str_comp(char *s1, char *s2)
 {
@@ -70,11 +71,13 @@ int str_comp(char *s1, char *s2)
 	if (s1[i] != s2[i])
 		return (-1);
 
-	return 0;
+	return (0);
 }
 
 /**
  * str_len - return the length of an string.
+ * @s: char.
+ * Return: len
  */
 int str_len(char *s)
 {
@@ -88,14 +91,15 @@ int str_len(char *s)
 		e++;
 		i++;
 	}
-	return e;
+	return (e);
 }
 
 
 /**
  * str_dup - return a pointer to a new string as duplicate of string.
  * @str: the source of the sting to be duplicate.
- * Return pointer to the duplicated string, or NULL if str = NULL or if insufficient memory was available.
+ * Return: pointer to the duplicated string,
+ * or NULL if str = NULL or if insufficient memory was available.
  */
 char *str_dup(char *str)
 {
