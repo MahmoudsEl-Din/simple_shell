@@ -17,12 +17,14 @@ char *str_cpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 
-	return dest;
+	return (dest);
 }
 
 /**
  * str_count - counts the number of times the char c is used in the buffer.
  * @buffer: buffer to check.
+ * @c: char
+ * Return: counter +1
  */
 int str_count(char *buffer, char c)
 {
@@ -36,7 +38,7 @@ int str_count(char *buffer, char c)
 		i++;
 	}
 
-	return counter + 1;
+	return (counter + 1);
 }
 
 /**
@@ -58,14 +60,14 @@ int is_not_empty(char *input_buffer)
 	if (input_buffer[i] && input_buffer[i] != '\n')
 		boolean = -1;
 
-	return boolean;
+	return (boolean);
 }
 
 /**
  * *str_cat - link two strings.
  * @dest: destination buffer.
  * @src: the source of string.
- * Return pointer to the resulting string destination.
+ * Return: pointer to the resulting string destination.
  */
 char *str_cat(char *dest, char *src)
 {
@@ -80,5 +82,5 @@ char *str_cat(char *dest, char *src)
 		dest[i] = src[j];
 	dest[i] = '\0';
 
-	return ptr;
+	return (ptr);
 }
