@@ -12,14 +12,15 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 	list_t *path;
 	char *file_id = av[0];
-	int port, method = 0;
+	int port = 0;
+	int method = 0;
 
 	signal(SIGINT, SIG_IGN);
 	path = createPathList(env);
 	if (isatty(0))
-		method = 1
+		method = 1;
 	port = run(path, env, file_id, method);
-	freeDirList(path
+	freeDirList(path);
 	return (port);
 }
 
