@@ -5,6 +5,7 @@
  * createPathList - creates a linked list of directories in the PATH.
  * @env: the environment variable.
  * pointer to the new list.
+ * Return: pointer
  */
 list_t *createPathList(char **env)
 {
@@ -47,7 +48,7 @@ list_t *createPathList(char **env)
  * addNodeToList - Add a new node to the list.
  * @head: pointer to the list.
  * @dir: some string to be placed in the new node.
- * pointer to the list.
+ * Return: pointer to the list.
  */
 list_t *addNodeToList(list_t **head, char *dir)
 {
@@ -71,14 +72,14 @@ list_t *addNodeToList(list_t **head, char *dir)
 	else
 		*head = new;
 
-	return new;
+	return (new);
 }
 
 
 /**
  * createList - ccreate a list of directories in the PATH.
  * @environ: the environment variable.
- * pointer to the new list.
+ * Return: pointer to the new list.
  */
 list_t *createList(char **environ)
 {
@@ -97,34 +98,6 @@ list_t *createList(char **environ)
 		}
 		i++;
 	}
-    
-	/*if (variableValue)
-	{
-		port = strtok(variableValue, ":");
-		while (port)
-		{
-			dir = str_dup(port);
-			if (dir)
-			{
-				if (head == NULL)
-				{
-					head = addList(&head, dir);
-					temp = head;
-				}
-				else
-				{
-					temp->next = addList(&temp->next, dir);
-					temp = temp->next;
-				}
-				port = strtok(NULL, ":");
-			}
-			else
-			{
-				perror("ERROR: Failed to duplicate directory");
-				break;
-			}
-		}
-	} */
 
 	if (variableValue)
 	{
@@ -149,8 +122,38 @@ list_t *createList(char **environ)
 	else
 		perror("ERROR: PATH environment variable not found\n");
 
-	return head;
+	return (head);
 }
+
+/*
+*	if (variableValue)
+*	{
+*		port = strtok(variableValue, ":");
+*		while (port)
+*		{
+*			dir = str_dup(port);
+*			if (dir)
+*			{
+*				if (head == NULL)
+*				{
+*					head = addList(&head, dir);
+*					temp = head;
+*				}
+*				else
+*				{
+*					temp->next = addList(&temp->next, dir);
+*					temp = temp->next;
+*				}
+*				port = strtok(NULL, ":");
+*			}
+*			else
+*			{
+*				perror("ERROR: Failed to duplicate directory");
+*				break;
+*			}
+*		}
+*	}
+*/
 
 
 
