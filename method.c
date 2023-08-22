@@ -33,7 +33,10 @@ int run(list_t *path, char **env, char *file_id, int method)
 			printError(file_id, buffer, 3);
 		}
 
-/* If the input buffer contains only spaces or the '\n' character, the prompt will be shown again */
+/*
+* If the input buffer contains only spaces
+* or the '\n' character, the prompt will be shown again
+*/
 		status = execute_command_line(buffer, path, env, file_id);
 		if (status == -1 || status == 127 || status == 2)
 		{
@@ -43,12 +46,12 @@ int run(list_t *path, char **env, char *file_id, int method)
 			break;
 		}
 	}
-	return status;
+	return (status);
 }
 
 
 /**
- * execute_command_line.
+ * execute_command_line - command line.
  * @buffer: command line to execute.
  * @path: pointer to the list of directories in the PATH.
  * @env: the environment variable.
@@ -72,7 +75,7 @@ int execute_command_line(char *buffer, list_t *path, char **env, char *file_id)
 			{
 				printError(file_id, input_buffer, 2);
 				free(input_buffer);
-                free(clean_command_line);
+				free(clean_command_line);
 				return (-1);
 			}
 			new_buffer = str_tr(input_buffer, ';', '\n');
@@ -85,19 +88,20 @@ int execute_command_line(char *buffer, list_t *path, char **env, char *file_id)
 	}
 	free(input_buffer);
 	free(clean_command_line);
-	return execution_result;
+	return (execution_result);
 }
 
 /**
- * run_command.
+ * run_command - run command.
  * @new_buffer: new command line to execute.
  * @path: pointer to the list of directories in the PATH.
  * @env: the environment variable.
  * @syntax_check: number of separate commands.
  * @file_id: The id of the shell.
- * Return: let's returns 0 if successful , 1 if sorry, command not found, or 2 if exit command.
+ * Return: let's returns 0 if successful , 1 if sorry, command not found, or 2
  */
-int run_command(char *new_buffer, list_t *path, char **env, int syntax_check, char *file_id)
+int run_command(char *new_buffer, list_t *path, char **env,
+						int syntax_check, char *file_id)
 {
 	char *temp_buffer, *current_buffer;
 	char **input;
@@ -115,7 +119,7 @@ int run_command(char *new_buffer, list_t *path, char **env, int syntax_check, ch
 		if (port == 2)
 		{
 			free(temp_buffer);
-			return 2;
+			return (2);
 		}
 		if (port == 0)
 		{
@@ -125,6 +129,6 @@ int run_command(char *new_buffer, list_t *path, char **env, int syntax_check, ch
 		free(temp_buffer);
 		current++;
 	}
-	return execution_result;
+	return (execution_result);
 }
 
