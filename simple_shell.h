@@ -13,7 +13,7 @@
 #include <signal.h>
 
 /**
- * Structure list representing a directory path list.
+ * struct list - representing a directory path list.
  * @dir: is directorry path.
  * @next: is just apointer to the next directory node.
  */
@@ -25,8 +25,10 @@ typedef struct list
 
 /*method.c*/
 int run(list_t *path, char **env, char *file_id, int method);
-int execute_command_line(char *buffer, list_t *path, char **env, char *file_id);
-int run_command(char *new_buffer, list_t *path, char **env, int syntax_check, char *file_id);
+int execute_command_line(char *buffer, list_t *path,
+							char **env, char *file_id);
+int run_command(char *new_buffer, list_t *path,
+						char **env, int syntax_check, char *file_id);
 
 /*MAIN.C*/
 int run_fork(char **input, char *file_id);
@@ -53,7 +55,8 @@ void freeDirList(list_t *head);
 /*getline.c*/
 char **createArgumentVector(char *input_buffer, list_t **path);
 char *getPath(char *buffer, list_t **path);
-char *port_getPath(list_t *pathList, char *slashCommand, char *slashInput, char *input);\
+char *port_getPath(list_t *pathList, char *slashCommand,
+						char *slashInput, char *input);
 
 /*memory.c*/
 char *removeLeadingSpaces(char *buffer);
