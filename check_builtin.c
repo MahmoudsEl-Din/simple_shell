@@ -18,7 +18,7 @@ int check_builtin(char *command)
 
 
 /**
- * check_builtin_commands - checks if the input corresponds to a built-in command.
+ * check_builtin_commands - checks if the input corresponds built-in command.
  * @input: command input.
  * @env: the environment variables.
  * Return: 0 if no built-in command is executed, 1 if executed, -1 on error.
