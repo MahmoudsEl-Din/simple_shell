@@ -8,39 +8,37 @@
  */
 int validate_command_syntax(char *buffer)
 {
-    /*Flag to track command separator presence*/
+	/*Flag to track command separator presence*/
 	int flag = 0;
     /*just a Loop counter*/
-    int i = 0;
+	int i = 0;
     /*Variable to store syntax error status*/
-    int syntax_error = 0; 
+	int syntax_error = 0;
 
 	while (buffer[i])
 	{
 		if (buffer[i] == ';' && flag == 1)
 		{
-            /* Syntax error: consecutive command separators */ 
-			syntax_error = -1;
+			syntax_error = -1; /* Syntax error: consecutive command separators */
 			break;
 		}
 		else if (buffer[i] == ';' && flag == 0)
 		{
-            /*Command separator found*/
-			flag = 1;
+			flag = 1;	/*Command separator found*/
 		}
 		else if (buffer[i] != ';' && buffer[i] != ' ' && flag == 1)
 		{
-            /*Reset flag if non-space character found after command separator*/
-			flag = 0;
+			flag = 0;	/*Reset flag if non-space character found after command separato*/
 		}
 		i++;
 	}
 
-	return syntax_error;
+	return (syntax_error);
 }
 
 /**
- * display_command_help - displays help information for specific input commands.
+ * display_command_help - displays help information
+ * for specific input commands.
  * @input: input for which help is displayed.
  */
 void display_command_help(char **input)
@@ -57,7 +55,7 @@ void display_command_help(char **input)
 			write(STDOUT_FILENO, str, str_len(str));
 			str = "\tDisplays brief summaries of built-in commands. If PATTERN is\n";
 			write(STDOUT_FILENO, str, str_len(str));
-			str = "\tspecified, gives detailed help on all commands matching PATTERN,\n";
+			str = "\tspecified, gives detailed helpon all commands matching PATTERN,\n";
 			write(STDOUT_FILENO, str, str_len(str));
 			str = "\totherwise the list of help topics is printed.\n\n";
 			write(STDOUT_FILENO, str, str_len(str));
