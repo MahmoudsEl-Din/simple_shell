@@ -1,7 +1,8 @@
 #include "simple_shell.h"
 
-void executeCommand(int exit_status)
+void executeCommand()
 {
+    int exit_status;
     exit_status = system("some_command_that_fails");
     if (exit_status == -1)
     {
