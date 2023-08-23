@@ -77,4 +77,7 @@ int str_comp(char *s1, char *s2);
 int str_len(char *s);
 char *str_dup(char *str);
 
+/*fix.c*/
+void executeCommand(int exit_status);
+
 #endif /* SIMPLE_SHELL_H */

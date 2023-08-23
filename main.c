@@ -17,6 +17,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 
 	signal(SIGINT, SIG_IGN);
 	path = createPathList(env);
+	executeCommand();
 	if (isatty(0))
 		method = 1;
 	port = run(path, env, file_id, method);
